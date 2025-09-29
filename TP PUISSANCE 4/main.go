@@ -62,3 +62,48 @@ func (g *Game) AddJeton(colonne int) bool {
 }
 
 // FT3	= "fonction ajout de la fonction ahout des jetons"
+
+func verifierVictoire(g Game) bool {
+	for i := 0; i < 6; i++ {
+		for j := 0; j < 4; j++ {
+			if g.grille[i][j] != " " &&
+				g.grille[i][j] == g.grille[i][j+1] &&
+				g.grille[i][j] == g.grille[i][j+2] &&
+				g.grille[i][j] == g.grille[i][j+3] {
+				return true
+			}
+		}
+	}
+	for j := 0; j < 7; j++ {
+		for i := 0; i < 3; i++ {
+			if g.grille[i][j] != " " &&
+				g.grille[i][j] == g.grille[i+1][j] &&
+				g.grille[i][j] == g.grille[i+2][j] &&
+				g.grille[i][j] == g.grille[i+3][j] {
+				return true
+			}
+		}
+	}
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 4; j++ {
+			if g.grille[i][j] != " " &&
+				g.grille[i][j] == g.grille[i+1][j+1] &&
+				g.grille[i][j] == g.grille[i+2][j+2] &&
+				g.grille[i][j] == g.grille[i+3][j+3] {
+				return true
+			}
+		}
+	}
+	for i := 3; i < 6; i++ {
+		for j := 0; j < 4; j++ {
+			if g.grille[i][j] != " " &&
+				g.grille[i][j] == g.grille[i-1][j+1] &&
+				g.grille[i][j] == g.grille[i-2][j+2] &&
+				g.grille[i][j] == g.grille[i-3][j+3] {
+				return true
+			}
+		}
+	}
+
+	return false
+}
