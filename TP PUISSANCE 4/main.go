@@ -15,6 +15,7 @@ type Game struct {
 func initGame() Game {
 	fmt.Println("========== BIENVENUE DANS LE PUISSANCE 4 ===========")
 	fmt.Println("LE JOUEUR 1 AURA LES X, LE JOUEUR 2 AURA LES O")
+	fmt.Println("LE BUT EST DE ALIGNEE 4 JETONS ")
 	fmt.Println("BONNE CHANCE JOUEUR !")
 	var grille [6][7]string
 	for i := range grille {
