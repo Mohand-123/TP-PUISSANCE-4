@@ -107,3 +107,9 @@ func verifierVictoire(g Game) bool {
 
 	return false
 }
+func (g *Game) verifierMatchNul() {
+	if g.nbrtour >= 42 {
+		fmt.Println("Match nul ! La grille est pleine.")
+		g.reset()
+	}
+}
