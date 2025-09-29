@@ -32,3 +32,31 @@ func initGame() Game {
 		nbrtour:       0,
 	}
 }
+func (g *Game) afficherTableau() {
+	fmt.Println("\nJoueur 1 : X")
+	fmt.Println("Joueur 2 : O")
+	fmt.Println("Joueur courant :", g.currentPlayer)
+	fmt.Println(" 0 1 2 3 4 5 6")
+	for i := 0; i < 6; i++ {
+		for j := 0; j < 7; j++ {
+			fmt.Print("|", g.grille[i][j])
+		}
+		fmt.Println("|")
+	}
+	fmt.Println("---------------")
+}
+
+func (g *Game) AddJeton(colonne int) bool {
+	if colonne < 0 || colonne >= 7 {
+		return false
+	}
+
+	for i := 5; i >= 0; i-- {
+		if g.grille[i][colonne] == " " {
+			g.grille[i][colonne] = g.currentPlayer
+			g.nbrtour++
+			return true
+		}
+	}
+	return false
+}
