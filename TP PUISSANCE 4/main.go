@@ -113,3 +113,17 @@ func (g *Game) verifierMatchNul() {
 		g.reset()
 	}
 }
+func (g *Game) reset() {
+	fmt.Println("========== REINITIALISATION DU JEU ===========")
+	*g = initGame()
+}
+
+func (g *Game) switchPlayer() {
+	if g.currentPlayer == g.player01 {
+		fmt.Println("C'est au tour du Joueur 2")
+		g.currentPlayer = g.player02
+	} else {
+		fmt.Println("C'est au tour du Joueur 1")
+		g.currentPlayer = g.player01
+	}
+}
