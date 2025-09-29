@@ -60,3 +60,5 @@ func (g *Game) AddJeton(colonne int) bool {
 	}
 	return false
 }
+
+// FT3	= "fonction ajout de la fonction ahout des jetons"
