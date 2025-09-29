@@ -127,3 +127,34 @@ func (g *Game) switchPlayer() {
 		g.currentPlayer = g.player01
 	}
 }
+func main() {
+	game := initGame()
+	game.afficherTableau()
+
+	for {
+		var colonne int
+		fmt.Printf("Joueur %s, entrez le numéro de la colonne (0-6) pour placer votre jeton : ", game.currentPlayer)
+		_, err := fmt.Scan(&colonne)
+		if err != nil {
+			fmt.Println("Entrée invalide. Veuillez entrer un numéro de colonne entre 0 et 6.")
+			continue
+		}
+
+		if !game.AddJeton(colonne) {
+			fmt.Println("Colonne pleine ou invalide. Veuillez choisir une autre colonne.")
+			continue
+		}
+
+		game.afficherTableau()
+
+		if verifierVictoire(game) {
+			fmt.Printf("Félicitations Joueur %s, vous avez gagné !\n", game.currentPlayer)
+			game.reset()
+			game.afficherTableau()
+			continue
+		}
+
+		game.verifierMatchNul()
+		game.switchPlayer()
+	}
+}
